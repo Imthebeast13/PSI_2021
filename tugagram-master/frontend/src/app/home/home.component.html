@@ -1,0 +1,15 @@
+<div *ngIf="!isLoggedIn">
+  <h2>Please login to view the most recent photos!</h2>
+</div>
+
+<div *ngIf="isLoggedIn"><h2>Most Recent Photos:</h2>
+  <h3 *ngIf="!isFullyLoaded">
+    Loading photos...
+  </h3>
+  <div class="photo-feed">
+    <a *ngFor="let photo of photos">
+      <img src="{{photo.base64}}" routerLink="/photo/{{photo._id}}">
+    </a>
+  </div>
+</div>
+

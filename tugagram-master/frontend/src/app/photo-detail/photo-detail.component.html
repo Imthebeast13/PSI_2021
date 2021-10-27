@@ -1,0 +1,16 @@
+<div *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="photo">
+  <img src="{{photo.base64}}">
+  <br>
+  <span>Name: {{photo.name}}</span>
+  <span *ngIf="photo.description.length > 0"><br>Description: {{ photo.description}}</span>
+  <br>
+  <span>Number of Likes: {{photo.likes}}</span>
+  <br>
+
+  <button>Like</button>
+  <button>Favorite</button>
+</div>

@@ -1,0 +1,48 @@
+<div id="app">
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+
+    <!-- LEFT TEXT -->
+    <a href="#" class="navbar-brand">TugaGram</a>
+
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <!-- HOME NAV-BUTTON -->
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home</a>
+      </li>
+      <!-- USER NAV-BUTTON IF USER IS LOGGED IN -->
+      <li class="nav-item">
+        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <!-- REGISTER NAV-BUTTON -->
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <!-- LOGIN NAV-BUTTON -->
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <!-- PROFILE NAV-BUTTON -->
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <!-- LOGOUT NAV-BUTTON -->
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+</div>
+
+<div *ngIf="photoBase64">
+  <img [src]="photoBase64"/>
+</div>
+
+<button type="button" (click)="fileInput.click()">
+  <span>Select photo</span>
+  <input #fileInput required type="file" name="Photo" accept="image/png, image/jpeg" (change)="onPhotoInput($event)"
+         style="display:none;"/>
+</button>
+
+<div *ngIf="!photoError && photoBase64">
+  <span>Name:</span>
+  <input #photoName type="text" name="PhotoName" (change)="modifyPhotoName(photoName.value)" maxlength="100">
+  <br>
+  <span>Description:</span>
+  <input #photoDescription type="text" name="PhotoDescritpion" (change)="modifyPhotoDescription(photoDescription.value)"
+         maxlength="500">
+</div>
+
+{{ photoError }}
+
+<button *ngIf="!photoError && photoBase64" (click)="save()">save</button>
+
+<div *ngIf="successMsg">
+  {{successMsg}}
+</div>
